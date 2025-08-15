@@ -159,7 +159,7 @@ export function QuestionCard({
                             🤔
                         </motion.div>
                         <p className="text-gray-500 text-sm font-medium">
-                            Think carefully... What's your gut feeling?
+                            Think carefully... What&apos;s your gut feeling?
                         </p>
                     </motion.div>
                 </CardContent>

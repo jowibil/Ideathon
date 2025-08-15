@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Trophy, Target, Zap, RotateCcw } from 'lucide-react';
 import type { UserStats } from '@/lib/localStorage';
-import { calculateUserTitle, getTitleProgress, type Title } from '@/lib/titleSystem';
+import { getTitleProgress } from '@/lib/titleSystem';
 import { getAccuracyPercentage } from '@/lib/localStorage';
 import { CATEGORIES, DIFFICULTIES } from '@/lib/quizData';
 import { JSX } from 'react/jsx-runtime';

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useCallback} from 'react';
 import { JSX } from 'react/jsx-runtime';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -43,16 +43,17 @@ export function QuizGame({ initialStats }: QuizGameProps): JSX.Element {
     } | null>(null);
     const [isAnswering, setIsAnswering] = useState<boolean>(false);
 
+    const generateQuestion = useCallback((): void => {
+        const question = getRandomQuestion(selectedCategory || undefined, selectedDifficulty || undefined);
+        setCurrentQuestion(question);
+    }, [selectedCategory, selectedDifficulty]);
+
     useEffect(() => {
         if (gameState === 'playing' && !currentQuestion) {
             generateQuestion();
         }
-    }, [gameState, selectedCategory, selectedDifficulty]);
+    }, [gameState, currentQuestion, generateQuestion]);
 
-    const generateQuestion = (): void => {
-        const question = getRandomQuestion(selectedCategory || undefined, selectedDifficulty || undefined);
-        setCurrentQuestion(question);
-    };
 
     const handleAnswer = (userAnswer: 'reyal' | 'faki'): void => {
         if (!currentQuestion || isAnswering) return;
