@@ -32,6 +32,7 @@ export function QuizGame({ initialStats }: QuizGameProps): JSX.Element {
     const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
     const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | null>(null);
     const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+    const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
     const [questionNumber, setQuestionNumber] = useState<number>(1);
     const [stats, setStats] = useState<UserStats>(() => initialStats || getUserStats());
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -44,13 +45,15 @@ export function QuizGame({ initialStats }: QuizGameProps): JSX.Element {
     const [isAnswering, setIsAnswering] = useState<boolean>(false);
 
     const generateQuestion = useCallback((): void => {
-        const question = getRandomQuestion(selectedCategory || undefined, selectedDifficulty || undefined);
+        const question = getRandomQuestion(selectedCategory || undefined, selectedDifficulty || undefined, usedQuestions);
         setCurrentQuestion(question);
-    }, [selectedCategory, selectedDifficulty]);
+    }, [selectedCategory, selectedDifficulty, usedQuestions]);
 
     useEffect(() => {
         if (gameState === 'playing' && !currentQuestion) {
             generateQuestion();
+            console.log(selectedCategory);
+            console.log(selectedDifficulty);
         }
     }, [gameState, currentQuestion, generateQuestion]);
 
@@ -71,6 +74,8 @@ export function QuizGame({ initialStats }: QuizGameProps): JSX.Element {
         );
         setStats(newStats);
         saveUserStats(newStats);
+
+        setUsedQuestions((prev) => [...prev, currentQuestion.id]);
 
         // Prepare modal data
         setLastAnswer({
@@ -246,8 +251,9 @@ export function QuizGame({ initialStats }: QuizGameProps): JSX.Element {
                                             </div>
                                         </div>
 
+                                        {/* bg-gradient-to-r from-blue-600 to-purple-600 */}
                                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                            <Button onClick={startQuiz} size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg px-8 py-4">
+                                            <Button onClick={startQuiz} size="lg" variant={"outline"} className="bg-green-500 text-white text-lg px-8 py-4">
                                                 Start Quiz 🚀
                                             </Button>
                                             {stats.totalQuestions > 0 && (
@@ -277,15 +283,28 @@ export function QuizGame({ initialStats }: QuizGameProps): JSX.Element {
                             />
                         )}
 
-                        {gameState === 'playing' && currentQuestion && (
-                            <QuestionCard
-                                question={currentQuestion}
-                                onAnswer={handleAnswer}
-                                questionNumber={questionNumber}
-                                totalQuestions={questionNumber + 9}
-                                disabled={isAnswering}
-                            />
+                        {gameState === 'playing' && (
+                            currentQuestion ? (
+                                <QuestionCard
+                                    question={currentQuestion}
+                                    onAnswer={handleAnswer}
+                                    questionNumber={questionNumber}
+                                    totalQuestions={questionNumber + 9}
+                                    disabled={isAnswering}
+                                />
+                            ) : (
+                                <Card className="max-w-xl mx-auto text-center p-6">
+                                    <CardContent>
+                                        <h2 className="text-2xl font-bold mb-4">Oh, No! No more Questions ☹️</h2>
+                                        <p className="text-gray-600 mb-6">
+                                            No more questions available for this category and difficulty.
+                                        </p>
+                                        <Button onClick={goHome}>Back to Home</Button>
+                                    </CardContent>
+                                </Card>
+                            )
                         )}
+
 
                         {gameState === 'stats' && (
                             <StatsDisplay

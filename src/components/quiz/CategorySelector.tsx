@@ -43,7 +43,6 @@ export function CategorySelector({
                         const accuracy = getCategoryAccuracy(category);
                         const questionsAnswered = categoryStats[category]?.total || 0;
                         const isSelected = selectedCategory === category;
-
                         return (
                             <motion.div
                                 key={category}
@@ -55,8 +54,8 @@ export function CategorySelector({
                             >
                                 <Card
                                     className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${isSelected
-                                            ? 'ring-2 ring-blue-500 bg-blue-50 border-blue-200'
-                                            : 'hover:bg-gray-50'
+                                        ? 'ring-2 ring-blue-500 bg-blue-50 border-blue-200'
+                                        : 'hover:bg-gray-50'
                                         }`}
                                     onClick={() => onCategorySelect(category)}
                                 >
@@ -112,8 +111,8 @@ export function CategorySelector({
                         variant={selectedCategory === null ? "default" : "outline"}
                         size="lg"
                         className={`px-8 py-3 ${selectedCategory === null
-                                ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                                : 'hover:bg-gray-100'
+                            ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
+                            : 'hover:bg-gray-100'
                             }`}
                     >
                         <motion.div

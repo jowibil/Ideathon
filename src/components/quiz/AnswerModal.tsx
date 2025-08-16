@@ -176,7 +176,7 @@ export function AnswerModal({
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
-                                className="bg-white bg-opacity-20 rounded-lg p-3 mb-6 text-sm"
+                                className="bg-white bg-opacity-20 rounded-lg p-3 mb-6 text-sm text-black"
                             >
                                 <p className="opacity-90">{explanation}</p>
                             </motion.div>

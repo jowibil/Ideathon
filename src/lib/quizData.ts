@@ -232,9 +232,12 @@ export function getQuestionsByCategoryAndDifficulty(
 
 export function getRandomQuestion(
   category?: Category,
-  difficulty?: Difficulty
-): Question {
+  difficulty?: Difficulty,
+  usedQuestions: string[] = []
+): Question | null {
+  
   let pool = QUIZ_DATA;
+  
 
   if (category && difficulty) {
     pool = getQuestionsByCategoryAndDifficulty(category, difficulty);
@@ -243,10 +246,11 @@ export function getRandomQuestion(
   } else if (difficulty) {
     pool = getQuestionsByDifficulty(difficulty);
   }
+  pool = pool.filter((q) => !usedQuestions.includes(q.id));
 
   if (pool.length === 0) {
-    pool = QUIZ_DATA;
+    return null;
   }
-
+  
   return pool[Math.floor(Math.random() * pool.length)];
 }

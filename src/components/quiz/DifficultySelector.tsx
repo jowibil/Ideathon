@@ -70,8 +70,8 @@ export function DifficultySelector({
                             >
                                 <Card
                                     className={`cursor-pointer transition-all duration-300 hover:shadow-xl relative overflow-hidden ${isSelected
-                                            ? 'ring-2 ring-offset-2 ring-orange-500 bg-orange-50 border-orange-200'
-                                            : 'hover:bg-gray-50'
+                                        ? 'ring-2 ring-offset-2 ring-orange-500 bg-orange-50 border-orange-200'
+                                        : 'hover:bg-gray-50'
                                         }`}
                                     onClick={() => onDifficultySelect(difficulty)}
                                 >
@@ -139,8 +139,8 @@ export function DifficultySelector({
                         variant={selectedDifficulty === null ? "default" : "outline"}
                         size="lg"
                         className={`px-8 py-4 ${selectedDifficulty === null
-                                ? 'bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg transform hover:scale-105'
-                                : 'hover:bg-gray-100'
+                            ? 'bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg transform hover:scale-105'
+                            : 'hover:bg-gray-100'
                             } transition-all duration-200`}
                     >
                         <motion.div
