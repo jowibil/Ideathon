@@ -13,7 +13,7 @@ import { QuestionCard } from '../quiz/QuestionCard';
 import { AnswerModal } from '../quiz/AnswerModal';
 import { StatsDisplay } from '../quiz/StatsDisplay';
 import { getRandomQuestion } from '@/lib/quizData';
-import type { Category, Difficulty, Question } from '@/lib/quizData';
+import type { Question, Category, Difficulty } from '@/lib/types';
 import { getUserStats, saveUserStats, updateStats, resetStats } from '@/lib/localStorage';
 import { calculateUserTitle } from '@/lib/titleSystem';
 import type { UserStats } from '@/lib/localStorage';

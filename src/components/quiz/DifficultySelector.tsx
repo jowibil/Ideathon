@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { DIFFICULTIES } from '@/lib/quizData';
-import type { Difficulty } from '@/lib/quizData';
+import type { Difficulty } from '@/lib/types';
 import { JSX } from 'react/jsx-runtime';
 
 interface DifficultySelectorProps {

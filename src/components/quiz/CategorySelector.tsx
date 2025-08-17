@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CATEGORIES } from '@/lib/quizData';
-import type { Category } from '@/lib/quizData';
+import type { Category } from '@/lib/types';
 import { JSX } from 'react/jsx-runtime';
 
 interface CategorySelectorProps {

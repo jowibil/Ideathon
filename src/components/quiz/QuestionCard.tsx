@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import type { Question } from '@/lib/quizData';
+import type { Question } from '@/lib/types';
 import { CATEGORIES, DIFFICULTIES } from '@/lib/quizData';
 import { JSX } from 'react/jsx-runtime';
 
