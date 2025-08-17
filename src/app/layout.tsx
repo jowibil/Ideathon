@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Reyal or Faki?",
-  description: "Mini-guessing app with a comedic twist.",
+  description: "Mini-guessing-app with a comedic twist.",
 };
 
 export default function RootLayout({

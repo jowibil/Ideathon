@@ -124,6 +124,7 @@ export function QuizGame({ initialStats }: QuizGameProps): JSX.Element {
         setQuestionNumber(1);
         setSelectedCategory(null);
         setSelectedDifficulty(null);
+        setUsedQuestions([]);
     };
 
     const handleResetStats = (): void => {
